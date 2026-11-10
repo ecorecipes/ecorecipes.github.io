@@ -77,7 +77,7 @@ window.ECORECIPES = {
       title: "Model ports & case studies",
       short: "Case studies",
       blurb:
-        "Published models of specific systems: Julia ports validated against the originals, and the reference Pascal code for the cassava PBDM.",
+        "Published models of specific systems: Julia ports validated against the originals, and modernized reference code for ash dieback (Python) and the cassava PBDM (Pascal).",
       seeAlso: ["PhysiologicallyBasedDemographicModels.jl"],
     },
   ],
@@ -346,6 +346,16 @@ window.ECORECIPES = {
       blurb:
         "A mechanistic-statistical model of the spread of ash dieback across France: a Julia port of PEOC.",
       tags: "hymenoscyphus fraxineus forest pathogen invasion spread tree disease",
+    },
+    {
+      name: "peoc_py3",
+      family: "cases",
+      role: "application",
+      docs: false,
+      lang: "Python",
+      blurb:
+        "A Python 3 port of PEOC 1.0 (Fritsch et al.), the ash dieback model, giving bit-for-bit the same outputs as the Python 2 original, with an optional faster solver and a command-line runner.",
+      tags: "peoc chalara ash dieback hymenoscyphus fraxineus python metropolis-hastings mcmc reference",
     },
     {
       name: "PowderyMildew.jl",
