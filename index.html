@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ecorecipes: open-source tools for ecological modeling</title>
+<meta name="description" content="A guide to the ecorecipes ecosystem: Julia packages for structured population dynamics, Bayesian networks, cellular automata, agent-based models and statistical fitting in ecology.">
+<meta property="og:title" content="ecorecipes">
+<meta property="og:description" content="Open-source Julia packages for ecological modeling, and a guide to choosing among them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecorecipes.github.io/">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // Apply a saved theme before first paint.
+  try {
+    var t = localStorage.getItem("ecorecipes-theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#packages">Skip to packages</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="ecorecipes home">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+        <path d="M6 26C6 13 14 6 27 5c-1 13-8 21-21 21Z" fill="currentColor" opacity=".18"/>
+        <path d="M6 26C6 13 14 6 27 5c-1 13-8 21-21 21Zm0 0L19 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>ecorecipes</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#guide">Guide</a>
+      <a href="#packages">Packages</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/ecorecipes">GitHub</a>
+    </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch color theme" title="Switch color theme">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <canvas id="hero-ca" aria-hidden="true"></canvas>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Open-source ecological modeling in Julia</p>
+      <h1>Recipes for modeling living systems</h1>
+      <p class="lede">
+        ecorecipes is a family of packages for population dynamics, Bayesian
+        networks, cellular automata, agent-based models and statistical
+        fitting. This page helps you find the one you need.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#guide">Find a package by task</a>
+        <a class="btn" href="#packages">Browse all <span data-stat="packages"></span></a>
+      </div>
+      <dl class="stats" id="stats"></dl>
+    </div>
+    <p class="ca-note wrap">Background: a forest-fire cellular automaton, running live.</p>
+  </section>
+
+  <section id="guide" class="section">
+    <div class="wrap">
+      <h2>What do you want to do?</h2>
+      <p class="section-lede">Start from the task. Each answer jumps to the package in the catalogue below.</p>
+      <ul class="tasks" id="tasks"></ul>
+    </div>
+  </section>
+
+  <section id="packages" class="section">
+    <div class="wrap">
+      <h2>The packages</h2>
+      <p class="section-lede">
+        Grouped into six families. Within a family, packages are tagged by the
+        role they play, so you can tell a modeling tool from the shared
+        foundation beneath it.
+      </p>
+    </div>
+
+    <div class="filters" id="filters">
+      <div class="wrap filters-inner">
+        <label class="search">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="sr-only">Search packages</span>
+          <input id="q" type="search" placeholder="Search packages, methods, keywords…" autocomplete="off" spellcheck="false">
+          <kbd>/</kbd>
+        </label>
+        <div class="chips" id="family-chips" role="group" aria-label="Filter by family"></div>
+        <div class="chips roles" id="role-chips" role="group" aria-label="Filter by role"></div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div id="families"></div>
+      <div class="empty" id="empty" hidden>
+        <p>No packages match. <button type="button" class="link" id="clear-filters">Clear filters</button></p>
+      </div>
+      <section class="family" id="uncatalogued" hidden>
+        <header class="family-head">
+          <h3>New on GitHub</h3>
+          <p>Repositories in the organization that this guide has not catalogued yet.</p>
+        </header>
+        <div class="grid" id="uncatalogued-grid"></div>
+      </section>
+      <noscript>
+        <p>This catalogue is rendered with JavaScript. You can also browse every repository at
+        <a href="https://github.com/orgs/ecorecipes/repositories">github.com/ecorecipes</a>.</p>
+      </noscript>
+    </div>
+  </section>
+
+  <section id="install" class="section">
+    <div class="wrap two-col">
+      <div>
+        <h2>Installing a package</h2>
+        <p>
+          Most ecorecipes packages are not yet in Julia's General registry, so
+          install them straight from GitHub. Every card above has a
+          <em>Copy install</em> button that puts the right command on your
+          clipboard.
+        </p>
+        <p>
+          Packages in the same family depend on one another. If the package
+          manager cannot find a dependency, add the family's foundation
+          package the same way first.
+        </p>
+      </div>
+      <div>
+        <div class="code">
+          <div class="code-head"><span>Julia REPL</span><button type="button" class="copy" data-copy-from="install-example">Copy</button></div>
+<pre id="install-example"><code>using Pkg
+Pkg.add(url="https://github.com/ecorecipes/MatrixProjectionModels.jl")
+
+using MatrixProjectionModels</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <p>
+      <strong>ecorecipes</strong> is a collection of models and tools for ecological modeling.
+      Source for this site and all packages is on <a href="https://github.com/ecorecipes">GitHub</a>.
+    </p>
+    <p class="muted">Found a mistake, or a package missing from the guide? <a href="https://github.com/ecorecipes/ecorecipes.github.io/issues">Open an issue</a>.</p>
+  </div>
+</footer>
+
+<script src="assets/packages.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
