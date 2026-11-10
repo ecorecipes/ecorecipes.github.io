@@ -251,7 +251,10 @@
   function checkUncatalogued() {
     var KEY = "ecorecipes-repos-v1";
     function show(repos) {
-      var extra = repos.filter(function (r) { return !byName[r.name] && r.name !== ORG + ".github.io" && r.name !== ".github"; });
+      var hidden = DATA.HIDDEN || [];
+      var extra = repos.filter(function (r) {
+        return !byName[r.name] && hidden.indexOf(r.name) === -1 && r.name !== ORG + ".github.io" && r.name !== ".github";
+      });
       if (!extra.length) return;
       var grid = $("uncatalogued-grid");
       extra.forEach(function (r) {

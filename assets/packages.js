@@ -77,7 +77,8 @@ window.ECORECIPES = {
       title: "Model ports & case studies",
       short: "Case studies",
       blurb:
-        "Published models of specific systems, ported to Julia and validated against the originals, plus manuscripts built on the ecosystem.",
+        "Published models of specific systems: Julia ports validated against the originals, and the reference Pascal code for the cassava PBDM.",
+      seeAlso: ["PhysiologicallyBasedDemographicModels.jl"],
     },
   ],
 
@@ -145,27 +146,6 @@ window.ECORECIPES = {
       blurb:
         "Physiologically based demographic models (PBDMs): weather-driven, stage-structured models of plants, arthropods and their interactions, reproducing published studies end to end.",
       tags: "pbdm gutierrez ponti weather temperature crop pest tritrophic distributed delay",
-    },
-    {
-      name: "pascal-pbdm-cassava-fpc",
-      family: "population",
-      role: "application",
-      docs: false,
-      lang: "Pascal",
-      blurb:
-        "The CASAS cassava tri-trophic PBDM (Gutierrez et al. 2025), modernized from legacy Delphi 3 to Free Pascal.",
-      tags: "cassava casas free pascal delphi reference",
-    },
-    {
-      name: "pascal-pbdm-cassava",
-      family: "population",
-      role: "application",
-      docs: false,
-      lang: "Pascal",
-      fork: true,
-      blurb:
-        "The original Pascal source of the cassava tri-trophic PBDM system, kept as a reference fork.",
-      tags: "cassava casas pascal original",
     },
     {
       name: "CategoricalPopulationDynamics.jl",
@@ -386,16 +366,31 @@ window.ECORECIPES = {
       tags: "quantitative genetics qtl evolution trait simulation",
     },
     {
-      name: "stressmodel-paper",
+      name: "pascal-pbdm-cassava-fpc",
       family: "cases",
       role: "application",
-      docs: true,
-      lang: "Manuscript",
+      docs: false,
+      lang: "Pascal",
       blurb:
-        "Draft manuscript and supporting information on self-organizing dominance hierarchies and rank–stress profiles.",
-      tags: "dominance hierarchy allostatic load behaviour paper",
+        "The CASAS cassava tri-trophic PBDM (Gutierrez et al. 2025), modernized from legacy Delphi 3 to Free Pascal.",
+      tags: "cassava casas free pascal delphi reference pbdm physiologically based demographic",
+    },
+    {
+      name: "pascal-pbdm-cassava",
+      family: "cases",
+      role: "application",
+      docs: false,
+      lang: "Pascal",
+      fork: true,
+      blurb:
+        "The original Pascal source of the cassava tri-trophic PBDM system, kept as a reference fork.",
+      tags: "cassava casas pascal original pbdm physiologically based demographic",
     },
   ],
+
+  /* Public repositories deliberately left out of the guide. Listing them here
+     also keeps them out of the automatic "New on GitHub" section. */
+  HIDDEN: ["stressmodel-paper"],
 
   /* "I want to..." entry points. Each links to one or more packages. */
   TASKS: [

@@ -30,7 +30,7 @@ Edit `assets/packages.js` and add an entry to `PACKAGES`:
 
 Optionally add a line to `TASKS` so it appears in the task guide. Counts, filter chips and statistics update themselves.
 
-Public repositories that exist in the organization but are missing from the catalogue are detected in the browser and listed under "New on GitHub" at the bottom of the page, so nothing is invisible while the catalogue catches up.
+Public repositories that exist in the organization but are missing from the catalogue are detected in the browser and listed under "New on GitHub" at the bottom of the page, so nothing is invisible while the catalogue catches up. To keep a public repository off the page entirely, add its name to `HIDDEN` in `assets/packages.js`.
 
 ## Previewing locally
 
