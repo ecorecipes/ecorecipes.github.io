@@ -157,6 +157,15 @@ window.ECORECIPES = {
       tags: "catlab acset functor compose stratify coarsen",
     },
     {
+      name: "MatrixCommunityModels.jl",
+      family: "population",
+      role: "method",
+      docs: true,
+      blurb:
+        "Matrix community models built by composition: stage- or size-structured species linked through shared pools such as space or biomass, with published community models reproduced and cross-species sensitivity analysis.",
+      tags: "mcm community multispecies density dependence competition wiring diagram riparian fish metacommunity",
+    },
+    {
       name: "ProjectionModels.jl",
       pkg: "StructuredPopulationCore.jl",
       family: "population",
@@ -406,6 +415,7 @@ window.ECORECIPES = {
   TASKS: [
     { want: "Project a stage- or age-structured population", use: ["MatrixProjectionModels.jl"] },
     { want: "Model a population structured by size or another continuous trait", use: ["IntegralProjectionModels.jl"] },
+    { want: "Link several structured populations into a community", use: ["MatrixCommunityModels.jl"] },
     { want: "Work in continuous time, with maturation delays", use: ["FiniteStatePopulationDynamics.jl", "ContinuousStatePopulationDynamics.jl"] },
     { want: "Simulate individuals and demographic stochasticity", use: ["IndividualBasedPopulationDynamics.jl"] },
     { want: "Estimate survival, growth and fecundity from field data", use: ["VitalRateModels.jl", "GAM.jl"] },
